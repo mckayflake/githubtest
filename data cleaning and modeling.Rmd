@@ -16,25 +16,6 @@ editor_options:
 
 # Part 1
 ```{r Set up, data import, data exploration, data partitioning, and inspection code}
-#A Load all the required packages 
-
-library(C50)
-library(rpart.plot)
-library(rpart)
-library(caret)
-library(rminer)
-library(RWeka)
-library(rmarkdown)
-library(tictoc)
-library(tidyverse) 
-library(e1071)
-library(psych)
-library(caret)
-library(matrixStats)
-library(knitr)
-library(kernlab)
-library(matrixStats)
-tic()
 
 cloud_wd <- getwd()
 setwd(cloud_wd)
