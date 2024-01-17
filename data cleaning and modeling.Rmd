@@ -1,6 +1,6 @@
 ---
-title: "data cleaning and modeling"
-author: "Mckay Flake"
+title: "githubtest"
+author: "Mckay Flake 1998"
 output:
   html_document:
     highlight: espresso
@@ -40,8 +40,6 @@ train_set <- DF[index_numbers_split,]
 test_set <- DF[-index_numbers_split,]
 
 ###  Set up cv parameters
-
-
 
 #test test test 
 df <- DF
