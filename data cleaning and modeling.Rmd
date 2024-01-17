@@ -1,0 +1,72 @@
+---
+title: "data cleaning and modeling"
+author: "Mckay Flake"
+output:
+  html_document:
+    highlight: espresso
+    number_sections: yes
+    toc: true
+editor_options: 
+  chunk_output_type: inline
+  keep_md: true
+---
+
+
+
+
+# Part 1
+```{r Set up, data import, data exploration, data partitioning, and inspection code}
+#A Load all the required packages 
+
+library(C50)
+library(rpart.plot)
+library(rpart)
+library(caret)
+library(rminer)
+library(RWeka)
+library(rmarkdown)
+library(tictoc)
+library(tidyverse) 
+library(e1071)
+library(psych)
+library(caret)
+library(matrixStats)
+library(knitr)
+library(kernlab)
+library(matrixStats)
+tic()
+
+cloud_wd <- getwd()
+setwd(cloud_wd)
+
+#i. Import NA_sales_filtered.csv and set stringsAsFactors = False.
+DF <- read.csv(file = "NA_sales_filtered.csv", stringsAsFactors = FALSE)
+
+#ii. Create a data frame with all of the variables except for Name.
+DF <- subset(DF, select = -Name)
+
+#iii. Transform character variables except for Name to factors.
+DF$Platform <- factor(DF$Platform)
+DF$Genre <- factor(DF$Genre)
+DF$Rating <- factor(DF$Rating)
+
+head(DF)
+#iv. Create the training and testing sets based on percentage split – 70% for training and 30% for testing.
+
+index_numbers_split <- createDataPartition(DF$NA_Sales,p = .7,list = FALSE)
+
+train_set <- DF[index_numbers_split,]
+test_set <- DF[-index_numbers_split,]
+
+###  Set up cv parameters
+
+df <- DF
+target <- 8
+seedVal <- 500
+metrics_list <- c("MAE","RMSE","MAPE","RMSPE","RAE","RRSE","R2")
+
+```
+
+
+
+```
